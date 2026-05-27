@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+html, body {
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= THEME ================= */
+:root {
+    --grad: linear-gradient(135deg, #16cbd8, #2697d8);
+    --grad2: linear-gradient(135deg, #2b81f1, #0cf8c5);
+    --grad3: linear-gradient(135deg, #05d0df, #0cf8c5);
+    --text-dark: #333;
+}
+
+/* ================= HEADER ================= */
+#HeaderHome {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--grad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+}
+
+#name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: white;
+}
+
+#Menu {
+    display: flex;
+    gap: 30px;
+}
+
+#Menu a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    color: white;
+    font-size: 1rem;
+}
+
+#Menu a:hover {
+    opacity: 0.7;
+}
+
+/* ================= PAGE CONTENT ================= */
+#PageContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= ICONES ================= */
+.icone {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(1);
+}
+
+/* ================= HOME MARQUEE ================= */
+#Home {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: white;
+}
+
+#HomeContent {
+    display: inline-block;
+    white-space: nowrap;
+    
+    /* Animation fluide */
+    animation: slideLeft 35s linear infinite;
+}
+
+/* Duplication automatique du texte pour continuité */
+#HomeContent span {
+    display: inline-block;
+    background: var(--grad);
+    background-clip: text;
+    color: transparent;
+}
+
+/* L’astuce : on fait défiler tout le contenu en boucle */
+@keyframes slideLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-49.56%); } /* on translate la moitié du contenu dupliqué */
+}
+
+/* Pour que le texte se répète parfaitement */
+#HomeContent::after {
+    content: attr(data-text); /* le même texte */
+    display: inline-block;
+    padding-left: 50px;
+}
+/* ================= CONTENT ================= */
+.BigTitle { 
+    margin-top: 50px;
+    text-align: center;
+    font-size: 2.3rem;
+    background: var(--grad2);
+    background-clip: text;
+    color: transparent;
+}
+
+#iut {
+    color:#04aab6;
+    text-decoration: none;
+}
+
+#iut:hover{
+    color: #04d1a5; 
+}
+
+#Présentation {
+    max-width: 750px;
+    margin: 30px auto 60px;
+    padding: 25px;
+    background: white;
+    border: 4px solid transparent;
+    border-radius: 16px;
+    background-image: 
+        linear-gradient(white, white),
+        var(--grad3);
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+    color: var(--text-dark);
+    line-height: 1.7;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: var(--grad);
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: auto; /* pousse le footer en bas si contenu court */
+}
+
+#Contact {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+#mention{
+    font-size: 70%;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    #HeaderHome {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #Menu {
+        gap: 20px;
+    }
+
+    .BigTitle {
+        font-size: 1.8rem;
+    }
+
+    #Présentation {
+        margin: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #Menu a {
+        font-size: 0.95rem;
+    }
+
+    #HomeContent span {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+html, body {
+    background: #ffffff;
+    color: white;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex:1;
+}
+/* ================= THEME ================= */
+:root {
+    --grad: linear-gradient(135deg, #f37abd, #c7203c);
+    --grad2: linear-gradient(135deg, #c90000, #df01af);
+    --grad3 : linear-gradient(135deg, #f80392, #f58fe4);
+    --text-dark: #333;
+}
+
+/* ================= HEADER ================= */
+#HeaderHome {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--grad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+}
+
+#name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: white;
+}
+
+#Menu {
+    display: flex;
+    gap: 30px;
+}
+
+#Menu a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    color: white;
+    font-size: 1rem;
+}
+
+#Menu a:hover {
+    opacity: 0.7;
+}
+
+/* ================= ICONES ================= */
+.icone {
+    width: 1em;           /* même hauteur que le texte */
+    height: 1em;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(1);
+}
+
+.gitIcon{
+    width:24px;
+    height:24px;
+    object-fit: cover;
+    max-height: 30px;
+}
+
+/* ================= HOME MARQUEE ================= */
+#Home {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: white;
+}
+
+#HomeContent {
+    display: inline-block;
+    white-space: nowrap;
+    
+    /* Animation fluide */
+    animation: slideLeft 35s linear infinite;
+}
+
+/* Duplication automatique du texte pour continuité */
+#HomeContent span {
+    display: inline-block;
+    background: var(--grad);
+    background-clip: text;
+    color: transparent;
+}
+
+/* L’astuce : on fait défiler tout le contenu en boucle */
+@keyframes slideLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-49.56%); } /* on translate la moitié du contenu dupliqué */
+}
+
+/* Pour que le texte se répète parfaitement */
+#HomeContent::after {
+    content: attr(data-text); /* le même texte */
+    display: inline-block;
+    padding-left: 50px;
+}
+
+/* ================= CONTENT ================= */
+.BigTitle { 
+    margin-top: 50px;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 2.3rem;
+    background: var(--grad2);
+    background-clip: text;
+    color: transparent;
+}
+
+.Title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+    background: var(--grad);
+    background-clip: text;
+    color: transparent;
+}
+
+/* === PROJECTS SECTION (HORIZONTAL PANE) === */
+
+#BodyProjects {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+
+#BodyProjects > div {
+    flex: 0 0 80%;
+    min-width: 350px;
+    background: var(--grad);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    scroll-snap-align: start;
+}
+
+.projectName{
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: var(--grad2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.Project {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    transition: 0.3s;
+    max-width: 400px;
+    margin: 30px auto 60px;
+    padding: 16px;
+    background: white; /* contenu blanc */
+    border: 4px solid transparent;
+    border-radius: 16px;
+    background-image: 
+        linear-gradient(white, white), /* intérieur blanc */
+        var(--grad2);                 /* couche de bordure gradient */
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+    color: var(--text-dark);
+    line-height: 1.7;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+
+.Project:hover {
+    transform: scale(1.03);
+}
+
+.utils{
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    transition: 0.3s;
+    max-width: 150px;
+    max-height: 60px;
+    padding: 16px;
+    border-radius: 20px;
+    background: transparent; 
+    background-image:  var(--grad);
+    color: white;
+    line-height: 1.7;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.utils:hover {
+    transform: scale(1.03);
+}
+
+#University {
+    padding-top: 60px;
+    position: relative;
+}
+
+#University::before {
+    content: '';
+    position: absolute; 
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, #f71c94, #ff80d5);
+    border-radius: 50px;
+}
+
+#Personal,
+#University {
+    display: flex;
+    flex-wrap: wrap;   /* autorise retour à la ligne */
+    gap: 5px;         /* espace entre projets */
+    margin-bottom: 70px;
+}
+
+/* Le titre prend toute la largeur */
+#Personal > .Title,
+#University > .Title {
+    width: 100%;
+}
+
+/* === RESPONSIVE IMAGES === */
+.Project img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.description {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.res {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 15px;
+}
+
+.seeMore {
+    display: flex;
+    justify-content: left;
+    margin-top: 10px;
+    gap: 15px;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: var(--grad);
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+#Contact {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    #HeaderHome {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #Menu {
+        gap: 20px;
+    }
+
+    .BigTitle {
+        font-size: 1.8rem;
+    }
+
+    #Présentation {
+        margin: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #Menu a {
+        font-size: 0.95rem;
+    }
+
+    #HomeContent span {
+        font-size: 1rem;
+    }
+}

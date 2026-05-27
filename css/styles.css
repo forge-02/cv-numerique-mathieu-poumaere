@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+
+/* === RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #7d059b;
+    color: #333;
+    line-height: 1.6;
+}
+
+.bodyHome{
+    padding-bottom: 120px; /* hauteur du footer */
+}
+/* === GRADIENT COLORS === */
+:root {
+    --grad: linear-gradient(135deg, #f8d63f, #07c58c);
+}
+
+/* === HEADER === */
+#HeaderHome {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--grad);
+    color: #333;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#HeaderHome a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#HeaderHome a:hover {
+    opacity: 0.7;
+}
+
+/* === MENU === */
+
+
+
+
+/* === TITLES === */
+.Title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 20px 0;
+    background: var(--grad);
+    background-clip: text;
+    color: transparent;
+}
+
+#Home {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#HomeContent {
+    display: inline-block;
+    animation: slideLeft 20s linear infinite;
+}
+
+#HomeContent span{
+    font-family: "Poppins" ;
+    text-align: center;
+    margin-top: 60px;
+    background: var(--grad);
+    background-clip: text;
+    color: transparent;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    font-size: 1.6rem;
+    padding-right: 10px; /* espace entre répétitions */
+}
+
+html, body {
+    overflow-x: hidden;
+    font-family: "Poppins" ;
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* === SKILLS === */
+#Skills {
+    margin: 50px auto;
+    text-align: center;
+    font-size: 2rem;
+    padding: 20px;
+    background: var(--grad);
+    background-clip: text;
+    color: transparent;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.res {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* === FOOTER === */
+footer {
+    background: var(--grad);
+    padding: 20px;
+    color: #333;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+footer a {
+    color: #333;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    opacity: 0.7;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+    #BodyProjects > div {
+        flex: 0 0 95%;
+    }
+}
+
+@media (max-width: 600px) {
+    #HeaderHome {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .Title {
+        font-size: 1.6rem;
+    }
+
+    #Home {
+        font-size: 1.8rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#BodyProjects {
+    display: flex;
+    overflow-x: auto;
+    gap: 40px;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+
+#BodyProjects > div {
+    flex: 0 0 80%;
+    min-width: 350px;
+    background: var(--grad);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    scroll-snap-align: start;
+}
+
+.Project {
+    border-radius: 10px;
+    transition: 0.3s;
+    max-width: 900px;
+    margin: 30px auto 60px;
+    padding: 25px;
+    background: white; /* contenu blanc */
+    border: 4px solid transparent;
+    border-radius: 16px;
+    background-image: 
+        linear-gradient(white, white), /* intérieur blanc */
+        var(--grad2);                 /* couche de bordure gradient */
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+    color: var(--text-dark);
+    line-height: 1.7;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.Project:hover {
+    transform: scale(1.03);
+}
